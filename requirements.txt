@@ -1,0 +1,23 @@
+## if this doesn't work maybe just replace it with these two dependencies
+## and see what happens
+# selenium
+# pytest
+# pylint
+
+# but this is what I got from pip freeze
+atomicwrites==1.3.0
+attrs==18.2.0
+isort==4.3.10
+lazy-object-proxy==1.3.1
+mccabe==0.6.1
+more-itertools==6.0.0
+pkg-resources==0.0.0
+pluggy==0.9.0
+py==1.8.0
+pylint==2.3.1
+pytest==4.3.0
+selenium==3.141.0
+six==1.12.0
+typed-ast==1.2.0
+urllib3==1.24.1
+wrapt==1.11.1

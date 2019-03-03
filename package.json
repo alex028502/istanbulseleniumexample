@@ -1,0 +1,40 @@
+{
+  "name": "istanbulseleniumexample",
+  "version": "1.0.0",
+  "description": "client side code coverage example with istanbul",
+  "private": true,
+  "scripts": {
+    "start": "webpack && cd public && ../venv/bin/python -m http.server",
+    "postinstall": "./install-python-stuff.sh",
+    "test": "npm run _test && npm run lint",
+    "_test": "npm run _refresh && npm run _unit && npm run _selenium && npm run _report",
+    "only-unit": "npm run _refresh && npm run _unit && npm run _report",
+    "only-browser": "npm run _refresh && webpack && npm run _selenium && npm run _report",
+    "_unit": "npm run __unit && cp .nyc_output/* nyc_output",
+    "__unit": "find . -name '*test.js' | grep -v node_modules | xargs nyc -s node",
+    "_refresh": "rm -rf nyc_output && mkdir nyc_output",
+    "_selenium": "webpack && ./venv/bin/pytest test.py",
+    "eslint": "./js-files.sh | xargs eslint",
+    "pylint": "venv/bin/pylint test.py",
+    "lint": "npm run eslint && npm run pylint",
+    "fix-format": "./js-files.sh | xargs eslint --fix",
+    "_report": "nyc report -t nyc_output"
+  },
+  "keywords": [
+    "istanbul",
+    "coverage",
+    "selenium",
+    "transpiled"
+  ],
+  "license": "enjoy, but don't blame me if it doesn't work",
+  "dependencies": {
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "^2.3.2",
+    "eslint": "^5.15.0",
+    "eslint-config-google": "^0.12.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "nyc": "^13.3.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}
